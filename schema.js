@@ -4,17 +4,20 @@ const BlogPostSchema = new mongoose.Schema({
     title: {
         type: String,
         unique: true,
-        minlength: 5
+        minlength: 5,
+        required: [true, "Please provide the title"]
     },
     content: {
         type: String,
         required: true,
         minlength: 50
+        required: [true, "Please provide the content"]
     },
     author: {
         type: String,
         required: true,
         ref: "User"
+        required: [true, "Please provide the author"]
     },
     tags: [{
         type: [String],
@@ -37,8 +40,8 @@ const BlogPostSchema = new mongoose.Schema({
 })
 
 const CommentSchema = new mongoose.Schema({
-    username: { type: String, required: true }, 
-    message: { type: String, required: true },
+    username: { type: String, required: [true, "Please enter your username"]}, 
+    message: { type: String, required: [true, "Please enter the message you want"] },
     commentedAt: { type: Date, default: Date.now }
   });
 
