@@ -10,13 +10,13 @@ const BlogPostSchema = new mongoose.Schema({
     content: {
         type: String,
         required: true,
-        minlength: 50
+        minlength: 50,
         required: [true, "Please provide the content"]
     },
     author: {
         type: String,
         required: true,
-        ref: "User"
+        ref: "User",
         required: [true, "Please provide the author"]
     },
     tags: [{
@@ -25,13 +25,14 @@ const BlogPostSchema = new mongoose.Schema({
     category: {
         type: String,
         default: "General"
+        required: [true, "Please provide the category"]
     },
     likes: [{
         type: String
     }],
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     updatedAt: {
         type: Date,
